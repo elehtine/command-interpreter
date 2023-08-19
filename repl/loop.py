@@ -28,7 +28,8 @@ def start(commands, mark="> "):
         line = input(mark)
 
         for command in commands:
-            status = command(line)
+            result = command(line)
+            status = result if result != None else status
 
     print("--- Loop end ---")
     return status

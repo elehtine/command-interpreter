@@ -14,9 +14,8 @@ def execute(line):
     if line != "add":
         return
 
-    print("add command")
-
-    first = loop.start([loop.read_int])
-    second = loop.start([loop.read_int])
+    print("Give two integer")
+    first = loop.start([loop.read_int], mark="first: ")
+    second = loop.start([loop.read_int], mark="second: ")
 
     print(f"{first} + {second} = {first + second}")
