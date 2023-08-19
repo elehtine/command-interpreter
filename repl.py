@@ -1,20 +1,32 @@
 """
-Define REPL
+Define REPL loop
+
+Loop is used in all commands.
 
 """
 
 
-def loop():
+def loop(commands):
     """
     Loop for REPL
 
+    Returns
+    -------
+    status
     """
 
-    print("Program start!")
+    print("--- Loop start ---")
     while True:
         line = input("> ")
+
         if not line:
             break
 
-        print(line)
-    print("Program end!")
+        status = None
+        for command in commands:
+            status = command(line)
+        if status:
+            break
+
+    print("--- Loop end ---")
+    return status

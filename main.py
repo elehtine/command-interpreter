@@ -3,6 +3,7 @@ Start read executed print loop (REPL)
 
 """
 
+from commands import add
 from repl import loop
 
 
@@ -11,8 +12,7 @@ def main():
     Start read executed print loop (REPL)
 
     """
-    print("Program start!")
-    loop()
+    loop([add.execute])
 
 
 if __name__ == "__main__":
