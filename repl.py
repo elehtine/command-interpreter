@@ -9,5 +9,12 @@ def loop():
     Loop for REPL
 
     """
-    line = input("> ")
-    print(line)
+
+    print("Program start!")
+    while True:
+        line = input("> ")
+        if not line:
+            break
+
+        print(line)
+    print("Program end!")
