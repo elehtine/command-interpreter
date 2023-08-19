@@ -12,7 +12,7 @@ def main():
     Start read executed print loop (REPL)
 
     """
-    loop([add.execute])
+    loop.start([add.execute])
 
 
 if __name__ == "__main__":

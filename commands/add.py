@@ -16,23 +16,7 @@ def execute(line):
 
     print("add command")
 
-    first = loop([read_int])
-    second = loop([read_int])
+    first = loop.start([loop.read_int])
+    second = loop.start([loop.read_int])
 
     print(f"{first} + {second} = {first + second}")
-
-
-def read_int(line):
-    """
-    Returns
-    -------
-    int, None : parsed integer
-
-    """
-
-    value = None
-    try:
-        value = int(line)
-    except ValueError:
-        print(f"Invalid number: {line}")
-    return value
