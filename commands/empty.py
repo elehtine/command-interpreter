@@ -5,6 +5,7 @@ Can be used two quit.
 
 """
 
+from repl.status import Status
 
 def execute(line):
     """
@@ -19,6 +20,9 @@ def execute(line):
     status : True for empty line
 
     """
-    
-    return True if line == "" else None
 
+    status = Status()
+    if line == "":
+        print("Empty line: exit")
+        status.end("exit")
+    return status

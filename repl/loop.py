@@ -5,33 +5,34 @@ Loop is used in all commands.
 
 """
 
+from repl.status import Status
 
 def start(commands, mark="> "):
     """
     Start loop for REPL
 
-    Execute commands in the loop. Every command is executed once per cycle.
-    Loop is running while status is None.
+    Execute commands in the loop. Loop is running while status is runnning.
 
     Parameters
     ----------
     commands : list of commands
+    mark : input marker
 
     Returns
     -------
     status
     """
 
-    print("--- Loop start ---")
-    status = None
-    while status is None:
+    status = Status()
+
+    while status.run:
         line = input(mark)
 
         for command in commands:
-            result = command(line)
-            status = result if result != None else status
+            status = command(line)
+            if status.value is not None:
+                break
 
-    print("--- Loop end ---")
     return status
 
 
@@ -43,9 +44,10 @@ def read_int(line):
 
     """
 
-    value = None
+    status = Status()
     try:
         value = int(line)
+        status.end(value)
     except ValueError:
         print(f"Invalid number: {line}")
-    return value
+    return status

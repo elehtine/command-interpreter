@@ -4,6 +4,7 @@ Add two numbers together
 """
 
 from repl import loop
+from repl.status import Status
 
 def execute(line):
     """
@@ -12,10 +13,12 @@ def execute(line):
     """
 
     if line != "add":
-        return
+        return Status()
 
     print("Give two integer")
     first = loop.start([loop.read_int], mark="first: ")
     second = loop.start([loop.read_int], mark="second: ")
+    result = first.value + second.value
 
-    print(f"{first} + {second} = {first + second}")
+    print(f"{first} + {second} = {result}")
+    return Status(True, result)
