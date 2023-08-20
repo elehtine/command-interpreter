@@ -7,7 +7,7 @@ Loop is used in all commands.
 
 from repl.status import Status
 
-def start(commands, mark="> "):
+def start(user_interface, commands, mark="> "):
     """
     Start loop for REPL
 
@@ -26,17 +26,17 @@ def start(commands, mark="> "):
     status = Status()
 
     while status.run:
-        line = input(mark)
+        line = user_interface.line(mark)
 
         for command in commands:
-            status = command(line)
+            status = command(user_interface, line)
             if status.value is not None:
                 break
 
     return status
 
 
-def read_int(line):
+def read_int(user_interface, line):
     """
     Returns
     -------
@@ -49,5 +49,5 @@ def read_int(line):
         value = int(line)
         status.end(value)
     except ValueError:
-        print(f"Invalid number: {line}")
+        user_interface.put(f"Invalid number: {line}")
     return status

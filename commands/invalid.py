@@ -5,10 +5,10 @@ Invalid command message
 
 from repl import status
 
-def execute(line):
+def execute(user_interface, line):
     """
     Print invalid command message
     """
 
-    print(f"Invalid command: {line}")
+    user_interface.put(f"Invalid command: {line}")
     return status.Status()

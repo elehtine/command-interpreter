@@ -7,7 +7,7 @@ Can be used two quit.
 
 from repl.status import Status
 
-def execute(line):
+def execute(user_interface, line):
     """
     Identifies empty line
 
@@ -23,6 +23,6 @@ def execute(line):
 
     status = Status()
     if line == "":
-        print("Empty line: exit")
+        user_interface.put("Empty line: exit")
         status.end("exit")
     return status

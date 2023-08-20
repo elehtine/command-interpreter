@@ -6,7 +6,7 @@ Add two numbers together
 from repl import loop
 from repl.status import Status
 
-def execute(line):
+def execute(user_interface, line):
     """
     Start loop for asking two numbers and print sum
 
@@ -15,10 +15,10 @@ def execute(line):
     if line != "add":
         return Status()
 
-    print("Give two integer")
-    first = loop.start([loop.read_int], mark="first: ")
-    second = loop.start([loop.read_int], mark="second: ")
+    user_interface.put("Give two integers")
+    first = loop.start(user_interface, [loop.read_int], mark="first: ")
+    second = loop.start(user_interface, [loop.read_int], mark="second: ")
     result = first.value + second.value
 
-    print(f"{first} + {second} = {result}")
+    user_interface.put(f"{first} + {second} = {result}")
     return Status(True, result)
